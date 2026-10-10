@@ -12,7 +12,6 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   Menu,
-  MessageSquare,
   X,
   PanelLeftClose,
   PanelLeft,
@@ -33,12 +32,13 @@ import { useMenuVisibilityStore } from '@/store/menuVisibilityStore'
 import { useUIStore } from '@/store/uiStore'
 import { useVersionStore } from '@/store/versionStore'
 import { cn } from '@/utils/cn'
+import { BrandLogo } from '@/components/common/BrandMark'
 
 interface SidebarProps {
   systemName?: string
 }
 
-export function Sidebar({ systemName = '闲鱼管理系统' }: SidebarProps) {
+export function Sidebar({ systemName = 'IceGod' }: SidebarProps) {
   const { user } = useAuthStore()
   const { hiddenMenuKeys, isExeMode } = useMenuVisibilityStore()
   const { sidebarCollapsed, sidebarMobileOpen, setSidebarMobileOpen, setSidebarCollapsed } = useUIStore()
@@ -151,7 +151,7 @@ export function Sidebar({ systemName = '闲鱼管理系统' }: SidebarProps) {
             !showLabel && 'justify-center px-2',
             indent && showLabel && 'pl-9',
             isActive
-              ? 'bg-blue-600 text-white dark:text-white hover:text-white hover:bg-blue-700 shadow-sm'
+              ? 'ig-nav-active'
               : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10'
           )
         }
@@ -179,7 +179,7 @@ export function Sidebar({ systemName = '闲鱼管理系统' }: SidebarProps) {
             className={cn(
               'flex items-center justify-center w-full px-2 py-2.5 rounded-md text-sm transition-all duration-150',
               isChildActive
-                ? 'bg-blue-600 text-white'
+                ? 'ig-nav-active'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10'
             )}
           >
@@ -270,7 +270,7 @@ export function Sidebar({ systemName = '闲鱼管理系统' }: SidebarProps) {
         initial={false}
         className={cn(
           'fixed top-0 left-0 h-screen z-50',
-          'bg-white dark:bg-[#001529]',
+          'ig-sidebar',
           'flex flex-col',
           'transition-transform duration-200 ease-out',
           'border-r border-slate-200 dark:border-slate-700',
@@ -286,9 +286,7 @@ export function Sidebar({ systemName = '闲鱼管理系统' }: SidebarProps) {
           )}
         >
           <div className="flex items-center gap-2 min-w-0">
-            <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
-              <MessageSquare className="w-4 h-4 text-white" />
-            </div>
+            <BrandLogo size="sm" />
             {showLabel && (
               <>
                 <span className="font-semibold text-sm text-slate-900 dark:text-white truncate min-w-0">

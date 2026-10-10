@@ -71,19 +71,17 @@ export default defineConfig({
     allowedHosts: [
       'localhost',
       '127.0.0.1',
-      'xy.zhinianboke.com',
-      'xy-back.zhinianboke.com'
     ],
     proxy: {
       // 所有 API 请求统一代理到后端（含WebSocket升级）
       '/api': {
-        target: 'http://localhost:8089',
+        target: process.env.VITE_API_TARGET || 'http://localhost:8089',
         changeOrigin: true,
         ws: true,
       },
       // 静态文件代理到后端（包含上传的图片）
       '/static': {
-        target: 'http://localhost:8089',
+        target: process.env.VITE_API_TARGET || 'http://localhost:8089',
         changeOrigin: true,
       },
     },

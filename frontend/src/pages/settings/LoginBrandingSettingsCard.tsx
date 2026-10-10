@@ -1,6 +1,7 @@
 import { LayoutTemplate, Save } from 'lucide-react'
 import { ButtonLoading } from '@/components/common/Loading'
 import type { LoginBrandingSettings } from '@/types'
+import { BrandLogo } from '@/components/common/BrandMark'
 
 interface LoginBrandingSettingsCardProps {
   settings: LoginBrandingSettings
@@ -66,19 +67,17 @@ export function LoginBrandingSettingsCard({ settings, saving, onChange, onSave }
 
           <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 p-4 space-y-4">
             <p className="text-sm font-medium text-slate-700 dark:text-slate-300">登录页预览</p>
-            <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-900 dark:bg-slate-950 min-h-[320px] relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent" />
+            <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 ig-auth-hero min-h-[320px] relative">
+              <div className="absolute inset-0 ig-auth-grid" />
               <div className="relative z-10 flex flex-col justify-center h-full px-6 py-8 space-y-5">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center text-white text-lg font-semibold">
-                    鱼
-                  </div>
+                  <BrandLogo size="md" />
                   <span className="text-xl font-bold text-white break-all">{settings['login.system_name']}</span>
                 </div>
                 <h3 className="text-3xl font-bold text-white leading-tight whitespace-pre-line">
                   {settings['login.system_title']}
                 </h3>
-                <p className="text-base text-slate-300 leading-7 whitespace-pre-line">
+                <p className="text-base text-slate-300/80 leading-7 whitespace-pre-line">
                   {settings['login.system_description']}
                 </p>
               </div>

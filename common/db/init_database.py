@@ -230,22 +230,22 @@ class DatabaseInitializer:
         ),
         (
             "login.system_name",
-            "闲鱼管理系统",
+            "IceGod",
             "登录页系统名称",
         ),
         (
             "login.system_title",
-            "高效专业的\n闲鱼自动化管理平台",
+            "让每一单\n自动、准时、不出错",
             "登录页系统标题",
         ),
         (
             "login.system_description",
-            "自动回复、智能客服、订单管理、数据分析，一站式解决闲鱼运营难题",
+            "自动回复、自动发货、订单与消息集中管理",
             "登录页系统描述",
         ),
         (
             "auth.footer_ad_html",
-            "© 2026 划算云服务器 ·<a href=\"http://www.hsykj.com\" target=\"_BLANK\">www.hsykj.com</a>",
+            "© 2026 IceGod",
             "登录页和注册页底部广告 HTML",
         ),
         (

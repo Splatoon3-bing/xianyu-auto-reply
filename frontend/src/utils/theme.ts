@@ -51,11 +51,33 @@ export const THEME_MODE_STORAGE_KEY = 'theme'
 
 const DEFAULT_THEME_SETTINGS: ThemeSettings = {
   'theme.effect': 'solid',
-  'theme.color_preset': 'ocean',
+  'theme.color_preset': 'glacier',
   'theme.font_family': 'system',
 }
 
 const THEME_PRESETS: Record<ThemeColorPreset, ThemePresetMeta> = {
+  glacier: {
+    key: 'glacier',
+    label: 'IceGod 冰川蓝',
+    description: 'IceGod 品牌默认主题，冷静克制的冰蓝色，适合长时间盯盘的运营后台。',
+    category: 'pure',
+    recommendedEffect: 'solid',
+    palette: {
+      50: '239 248 255',
+      100: '219 239 254',
+      200: '191 225 251',
+      300: '142 199 247',
+      400: '84 166 238',
+      500: '35 131 224',
+      600: '22 107 199',
+      700: '20 86 162',
+      800: '22 72 133',
+      900: '23 61 109',
+      gradientFrom: '22 107 199',
+      gradientVia: '14 165 233',
+      gradientTo: '45 212 191',
+    },
+  },
   ocean: {
     key: 'ocean',
     label: '海洋蓝',
@@ -219,63 +241,63 @@ const THEME_FONT_FAMILIES: Record<ThemeFontFamily, ThemeFontMeta> = {
     key: 'system',
     label: '系统默认',
     description: '优先使用当前设备系统字体，兼顾中文显示与跨平台一致性。',
-    previewText: '系统默认 Aa 字体示例 123 你好闲鱼',
+    previewText: '系统默认 Aa 字体示例 123 你好 IceGod',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif',
   },
   yahei: {
     key: 'yahei',
     label: '微软雅黑',
     description: 'Windows 环境更常见，表格和后台场景下识别度较高。',
-    previewText: '微软雅黑 Aa 字体示例 123 你好闲鱼',
+    previewText: '微软雅黑 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif',
   },
   heiti: {
     key: 'heiti',
     label: '现代黑体',
     description: '笔画利落、风格现代，适合强调清晰感的系统界面。',
-    previewText: '现代黑体 Aa 字体示例 123 你好闲鱼',
+    previewText: '现代黑体 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Segoe UI", sans-serif',
   },
   songti: {
     key: 'songti',
     label: '雅致宋体',
     description: '更适合偏内容阅读型页面，让标题和正文层次更明显。',
-    previewText: '雅致宋体 Aa 字体示例 123 你好闲鱼',
+    previewText: '雅致宋体 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif',
   },
   kaiti: {
     key: 'kaiti',
     label: '经典楷体',
     description: '书卷气更强，适合标题、说明区和需要文化感的界面。',
-    previewText: '经典楷体 Aa 字体示例 123 你好闲鱼',
+    previewText: '经典楷体 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"KaiTi", "楷体", "STKaiti", "Kaiti SC", serif',
   },
   fangsong: {
     key: 'fangsong',
     label: '文雅仿宋',
     description: '阅读感柔和，适合说明文案、公告和偏正文型页面。',
-    previewText: '文雅仿宋 Aa 字体示例 123 你好闲鱼',
+    previewText: '文雅仿宋 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"FangSong", "仿宋", "STFangsong", "FZFangSong-Z02", serif',
   },
   xingkai: {
     key: 'xingkai',
     label: '行楷风格',
     description: '带一点书写感，适合欢迎页、标题区和偏个性化的系统界面。',
-    previewText: '行楷风格 Aa 字体示例 123 你好闲鱼',
+    previewText: '行楷风格 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"STXingkai", "华文行楷", "KaiTi", "楷体", "STKaiti", "Kaiti SC", serif',
   },
   rounded: {
     key: 'rounded',
     label: '圆润字体',
     description: '字形更圆润友好，适合轻量化、现代化和移动端风格界面。',
-    previewText: '圆润字体 Aa 字体示例 123 你好闲鱼',
+    previewText: '圆润字体 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"SF Pro Rounded", "Arial Rounded MT Bold", "Helvetica Rounded", "PingFang SC", "Microsoft YaHei", sans-serif',
   },
   monospace: {
     key: 'monospace',
     label: '等宽风格',
     description: '数字与字符更容易对齐，适合数据较多或技术风格界面。',
-    previewText: '等宽风格 Aa 字体示例 123 你好闲鱼',
+    previewText: '等宽风格 Aa 字体示例 123 你好 IceGod',
     fontFamily: '"Cascadia Code", "JetBrains Mono", "Microsoft YaHei Mono", "Consolas", "Microsoft YaHei", monospace',
   },
 }
@@ -293,7 +315,7 @@ const THEME_EFFECT_DESCRIPTIONS: Record<ThemeEffect, string> = {
 const isThemeEffect = (value: unknown): value is ThemeEffect => value === 'solid' || value === 'gradient'
 
 const isThemeColorPreset = (value: unknown): value is ThemeColorPreset => {
-  return value === 'ocean' || value === 'emerald' || value === 'violet' || value === 'indigo' || value === 'amber' || value === 'sunset' || value === 'aurora' || value === 'rose' || value === 'ruby'
+  return value === 'glacier' || value === 'ocean' || value === 'emerald' || value === 'violet' || value === 'indigo' || value === 'amber' || value === 'sunset' || value === 'aurora' || value === 'rose' || value === 'ruby'
 }
 
 const isThemeFontFamily = (value: unknown): value is ThemeFontFamily => {

@@ -7,17 +7,16 @@
  */
 import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { Home, Key, RefreshCw, Monitor, Menu, X, MessageSquare, Code2, Sun, Moon } from 'lucide-react'
+import { Home, Key, RefreshCw, Monitor, Menu, X, Code2, Sun, Moon } from 'lucide-react'
 import { getDefaultLoginBrandingSettings, LOGIN_BRANDING_UPDATED_EVENT } from '@/api/settings'
 import { getLoginBrandingSettings } from '@/api/auth'
 import type { LoginBrandingSettings } from '@/types'
 import { cn } from '@/utils/cn'
 import { initializeThemeMode, toggleThemeMode } from '@/utils/theme'
+import { BrandLogo } from '@/components/common/BrandMark'
 
 /** 判断当前是否为线上正式环境 */
-const isOnlineEnv = () => {
-  return window.location.hostname === 'xy.zhinianboke.com'
-}
+const isOnlineEnv = () => false
 
 /** 导航菜单项定义 */
 const NAV_ITEMS = [
@@ -100,7 +99,6 @@ export function AuthNavbar({ systemName }: AuthNavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const resolvedSystemName = usePublicSystemName(systemName)
   const online = isOnlineEnv()
-  /** 根据当前环境过滤菜单项：仅线上正式环境(xy.zhinianboke.com)显示受域名限制的菜单 */
   const filteredItems = NAV_ITEMS.filter(item => !item.hideOnLocal || online)
 
   // 主题切换（统一在 Navbar 内管理，避免各页面重复实现和遮挡手机端汉堡菜单）
@@ -118,9 +116,7 @@ export function AuthNavbar({ systemName }: AuthNavbarProps) {
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link to="/login" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center">
-              <MessageSquare className="w-4 h-4 text-white" />
-            </div>
+            <BrandLogo size="sm" />
             <span className="text-sm font-bold text-slate-900 dark:text-white hidden sm:inline">
               {resolvedSystemName}
             </span>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { MessageSquare, Mail, KeyRound, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react'
+import { Mail, KeyRound, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react'
 import { AuthNavbar } from '@/components/common/AuthNavbar'
 import { SafeHtml } from '@/components/common/SafeHtml'
 import { getDefaultAuthFooterAdSettings, getDefaultLoginBrandingSettings } from '@/api/settings'
@@ -9,6 +9,7 @@ import { sendResetPasswordCode, resetPassword, getLoginBrandingSettings, getAuth
 import { useUIStore } from '@/store/uiStore'
 import { ButtonLoading } from '@/components/common/Loading'
 import { GeetestCaptcha, type GeetestResult } from '@/components/common/GeetestCaptcha'
+import { BrandLogo } from '@/components/common/BrandMark'
 
 export function ForgotPassword() {
   const navigate = useNavigate()
@@ -148,9 +149,9 @@ export function ForgotPassword() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="hidden lg:flex lg:w-1/2 bg-slate-900 dark:bg-slate-950 relative overflow-hidden"
+          className="hidden lg:flex lg:w-1/2 ig-auth-hero relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent" />
+          <div className="absolute inset-0 ig-auth-grid" />
           <div className="relative z-10 flex flex-col justify-center px-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -158,9 +159,7 @@ export function ForgotPassword() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="flex items-center gap-3 mb-8"
             >
-              <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center">
-                <MessageSquare className="w-6 h-6 text-white" />
-              </div>
+              <BrandLogo size="md" />
               <span className="text-2xl font-bold text-white">{loginBranding['login.system_name']}</span>
             </motion.div>
             <motion.h1
@@ -181,8 +180,6 @@ export function ForgotPassword() {
             </motion.p>
           </div>
           {/* Decorative circles */}
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-blue-600/10" />
-          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-600/5" />
         </motion.div>
 
         {/* Right side - Form */}
@@ -200,9 +197,7 @@ export function ForgotPassword() {
               transition={{ delay: 0.1, duration: 0.4 }}
               className="lg:hidden text-center mb-8"
             >
-              <div className="w-12 h-12 rounded-xl bg-blue-500 text-white mx-auto mb-4 flex items-center justify-center">
-                <MessageSquare className="w-6 h-6" />
-              </div>
+              <BrandLogo size="md" className="mx-auto mb-4" />
               <h1 className="text-xl font-bold text-slate-900 dark:text-white">{loginBranding['login.system_name']}</h1>
             </motion.div>
 
