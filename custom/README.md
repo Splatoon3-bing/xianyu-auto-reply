@@ -15,7 +15,7 @@ sudo docker compose -f ../compose.yaml logs -f websocket   # 观察
 git add -A && git commit -m "feat: ..." && git push
 ```
 - 改 `common/` → 三个后端都要 build：`custom/build.sh`
-- 改前端 → `custom/build.sh frontend`，并在 ../compose.override.yaml 中取消 frontend 注释
+- 改前端 → `custom/build.sh frontend`（node:18-alpine 编译 + nginx:alpine 运行，配置见 custom/nginx.frontend.conf，不依赖官方前端镜像）
 - 快速调试 Python：`custom/dev.sh on`，之后改完 `sudo docker compose restart <服务>`；调完 `custom/dev.sh off`
 
 ## 跟进上游更新
