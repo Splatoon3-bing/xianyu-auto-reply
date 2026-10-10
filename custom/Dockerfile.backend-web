@@ -1,0 +1,7 @@
+# 二开叠加层：基于官方镜像（锁定 digest），只覆盖 Python 源码，不重装依赖/浏览器
+# 如果改了 pyproject.toml 依赖，请在下面取消注释 pip install 行
+FROM registry.cn-shanghai.aliyuncs.com/zhinian-software/xianyu-backend-web@sha256:e507792d3c88514f48a8c10a329bffd633f415205828d782c296e494fba48828
+COPY common   /app/common
+COPY launcher /app/launcher
+COPY backend-web /app/backend-web
+# RUN pip install --no-cache-dir -i https://mirrors.tencentyun.com/pypi/simple <新增依赖>

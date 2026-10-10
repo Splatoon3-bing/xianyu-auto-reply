@@ -1,0 +1,7 @@
+# 二开叠加层：基于官方镜像（锁定 digest），只覆盖 Python 源码，不重装依赖/浏览器
+# 如果改了 pyproject.toml 依赖，请在下面取消注释 pip install 行
+FROM registry.cn-shanghai.aliyuncs.com/zhinian-software/xianyu-websocket@sha256:5e7ca042b2f7c4e49c43c7e1a2dde5d135184c938dfbbac9dc528e37f66a417b
+COPY common   /app/common
+COPY launcher /app/launcher
+COPY websocket /app/websocket
+# RUN pip install --no-cache-dir -i https://mirrors.tencentyun.com/pypi/simple <新增依赖>
